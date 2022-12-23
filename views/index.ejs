@@ -1,0 +1,44 @@
+<!--include header-->
+<%-include('include/_header')%>
+
+<!--Form Add New ID-->
+<form action="/newuser" method="post">
+    <div class="input-group mb-3 mt-5" >
+        <input name="idUser" type="text" class="form-control" placeholder="Enter ID" aria-label="Enter ID" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-success" type="submit" id="button-addon2">Add New User ID</button>
+        </div>
+      </div>
+</form>
+
+<!--Form Handling-->
+<form action="/" method="get">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% listData.forEach(function(data) { %>
+                <tr>
+                    <td><%=data.id%></td>
+                    <td><%=data.name%></td>
+                    <td><%=data.status%></td>
+                    <td>                        
+                        <a href="/delete?id=<%=data.id%>" class="btn btn btn-danger border-shadow">
+                            <span class="text-gradient">Delete <i class="fas fa-times"></i></span>
+                        </a>
+                    </td>
+                </tr>
+            <% }); %>
+            
+        </tbody>
+    </table>
+</form>
+
+<!--include footer-->
+<%-include('include/_footer')%>
